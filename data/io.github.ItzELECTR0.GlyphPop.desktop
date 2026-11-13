@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=GlyphPop
+Comment=Pick an emoji, kaomoji or symbol and type it where you are
+Exec=glyphpop
+Icon=face-smile
+Terminal=false
+Categories=Utility;
+Keywords=emoji;kaomoji;symbol;character;picker;
+StartupNotify=false
+NoDisplay=false
