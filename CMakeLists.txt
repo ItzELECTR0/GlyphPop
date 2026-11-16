@@ -8,7 +8,10 @@ find_program(ZIG_EXECUTABLE zig REQUIRED)
 find_package(Qt6 6.8 REQUIRED COMPONENTS Quick Qml DBus WaylandClient)
 # The input-method popup role and grabbed-key delivery need Qt's private Wayland and QPA API, on purpose.
 set(QT_NO_PRIVATE_MODULE_WARNING ON)
-find_package(Qt6 REQUIRED COMPONENTS GuiPrivate WaylandClientPrivate)
+# Qt 6.9 split the private modules into packages of their own; 6.8 defines them with the public ones.
+if(Qt6_VERSION VERSION_GREATER_EQUAL 6.9)
+    find_package(Qt6 REQUIRED COMPONENTS GuiPrivate WaylandClientPrivate)
+endif()
 find_package(LayerShellQt REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(XKB REQUIRED IMPORTED_TARGET xkbcommon)
