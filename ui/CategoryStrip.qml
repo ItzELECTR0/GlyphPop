@@ -12,6 +12,7 @@ ListView {
     orientation: ListView.Horizontal
     spacing: 2
     clip: true
+    acceptedButtons: Qt.NoButton
     boundsBehavior: Flickable.StopAtBounds
     model: Picker.categories
     // Centre the icon row when it fits, as it does for emoji and symbols.
@@ -25,6 +26,8 @@ ListView {
             }
         }
     }
+
+    WheelScroll { view: strip }
 
     delegate: Item {
         id: button

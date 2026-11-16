@@ -33,13 +33,16 @@ FocusScope {
     }
 
     Flickable {
+        id: page
         anchors.top: header.bottom
         anchors.topMargin: 6
         anchors.bottom: parent.bottom
         width: parent.width
         contentHeight: column.height + 8
         clip: true
+        acceptedButtons: Qt.NoButton
         boundsBehavior: Flickable.StopAtBounds
+        WheelScroll { view: page }
 
         Column {
             id: column

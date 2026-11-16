@@ -49,6 +49,7 @@ set(QML_SOURCES
     ui/BackIcon.qml
     ui/ColorPicker.qml
     ui/OptionsPage.qml
+    ui/WheelScroll.qml
 )
 foreach(source IN LISTS QML_SOURCES)
     get_filename_component(alias "${source}" NAME)

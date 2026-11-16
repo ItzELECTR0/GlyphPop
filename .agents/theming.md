@@ -56,3 +56,7 @@ values (`hover`, `pressed`, `selection`) are alpha blends in `Theme.qml`.
 (`Picker.options`). Esc goes back to the grid. Controls are drawn from plain QtQuick items (`Segmented`,
 `IconButton`, `ColorPicker`, drawn `TuneIcon` and `BackIcon`) so nothing depends on an icon theme or a Qt Quick
 Controls style.
+
+## Scrolling
+
+Scroll views take no mouse buttons (`acceptedButtons: Qt.NoButton`), so a mouse drag never scrolls them; touch and touchpads still do. `WheelScroll` moves `wheelScrollLines` times 24 px per wheel notch, because Flickable turns each wheel event into a speed-capped flick that crawls, worst with high-resolution wheels. It is a MouseArea under the content with `scrollGestureEnabled: false`, so controls get the wheel first and touchpad scrolls (synthesized events) fall through to Flickable's own kinetic scrolling. A WheelHandler cannot do this: on Wayland, wheel events carry Qt's touchpad device whenever the compositor offers pointer gestures, and the handler blocks before `onWheel` runs.

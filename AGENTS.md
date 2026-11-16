@@ -18,6 +18,6 @@ is C++ in `app/`, and the Unicode data, search and symbol/kaomoji sets live in Z
 - `.agents/input.md`: read before touching the input method, the popup role, the keyboard grab or the virtual
   keyboard.
 - `.agents/unicode-data.md`: read before updating emoji, CLDR or symbol data, or changing search.
-- `.agents/theming.md`: read before changing colours, sizes, fonts or the theme file format.
+- `.agents/theming.md`: read before changing colours, sizes, fonts, scrolling or the theme file format.
 - `.agents/testing.md`: read before running the app, especially on the live desktop.
 - `.agents/packaging.md`: read before changing anything in `packaging/` or `.github/workflows/`, or cutting a release.

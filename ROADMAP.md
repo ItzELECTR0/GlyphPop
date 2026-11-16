@@ -7,6 +7,7 @@
 - Overlay mode: that the pointer position arrives on map, and that keyboard focus returns to the app after close.
 - The virtual keyboard with the `hl-virtual-keyboard-glyphpop` permission rule, in a native app without text input.
 - Chromium and Electron apps with and without `--enable-wayland-ime`.
+- Touchpad scrolling in the grid and options page still being kinetic.
 
 ## Behaviour
 

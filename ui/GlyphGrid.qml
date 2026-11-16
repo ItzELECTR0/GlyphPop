@@ -30,6 +30,7 @@ ListView {
 
     clip: true
     model: Picker.model
+    acceptedButtons: Qt.NoButton
     boundsBehavior: Flickable.StopAtBounds
     reuseItems: true
     cacheBuffer: 320
@@ -142,4 +143,5 @@ ListView {
     }
 
     HoverHandler { id: scrollHover }
+    WheelScroll { view: list }
 }
