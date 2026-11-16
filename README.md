@@ -74,7 +74,7 @@ GlyphPop is an input method, and Wayland allows one per seat. If you run fcitx5 
 
 ## Install
 
-Grab a package for Arch, Debian 13, Fedora 44 or Alpine 3.24 (x86_64 or aarch64) from the [releases](https://github.com/ItzELECTR0/GlyphPop/releases).
+Grab a package for Arch, Ubuntu 26.04, Fedora 44 or Alpine 3.24 (x86_64 or aarch64) from the [releases](https://github.com/ItzELECTR0/GlyphPop/releases).
 The Alpine one is signed with a throwaway key, so it needs `apk add --allow-untrusted`.
 The `experimental` release at the top is built from the latest commit, so it's the newest and also the most likely to be broken.
 

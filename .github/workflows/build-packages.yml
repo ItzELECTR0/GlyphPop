@@ -57,8 +57,8 @@ jobs:
           path: packaging/glyphpop-[0-9]*.pkg.tar.zst
           if-no-files-found: error
 
-  debian:
-    name: Debian 13 ${{ matrix.arch }}
+  ubuntu:
+    name: Ubuntu 26.04 ${{ matrix.arch }}
     strategy:
       fail-fast: false
       matrix:
@@ -68,7 +68,9 @@ jobs:
           - arch: aarch64
             runner: ubuntu-24.04-arm
     runs-on: ${{ matrix.runner }}
-    container: debian:13
+    container: ubuntu:26.04
+    env:
+      DEBIAN_FRONTEND: noninteractive
     steps:
       - name: Install build tools
         run: |
@@ -87,7 +89,7 @@ jobs:
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           cp -r packaging/debian debian
           cat > debian/changelog <<CHANGELOG
-          glyphpop ($(packaging/version.sh)) trixie; urgency=medium
+          glyphpop ($(packaging/version.sh)) resolute; urgency=medium
 
             * Built from ${GITHUB_SHA:0:7}.
 
@@ -98,7 +100,7 @@ jobs:
           mv ../glyphpop_*.deb artifacts/
       - uses: actions/upload-artifact@v7
         with:
-          name: glyphpop-debian-package-${{ matrix.arch }}
+          name: glyphpop-ubuntu-package-${{ matrix.arch }}
           path: artifacts
           if-no-files-found: error
 
@@ -166,7 +168,7 @@ jobs:
           docker run --rm -v "$PWD:/work" -v "$(dirname "$(readlink -f "$(command -v zig)")"):/opt/zig:ro" alpine:3.24 sh -c '
             set -eu
             export PATH="/opt/zig:$PATH"
-            apk add --no-cache alpine-sdk
+            apk add alpine-sdk
             git config --global --add safe.directory /work
             abuild-keygen -na
             cp /root/.abuild/*.rsa.pub /etc/apk/keys/
