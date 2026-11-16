@@ -9,6 +9,7 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
         .link_libc = true,
+        .pic = true,
     });
     core.addAnonymousImport("emoji-test", .{ .root_source_file = b.path("data/unicode/emoji-test.txt") });
     core.addAnonymousImport("annotations", .{ .root_source_file = b.path("data/unicode/annotations-en.xml") });
