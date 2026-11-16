@@ -1,9 +1,9 @@
 # Maintainer: ELECTRO
 pkgname=glyphpop
-pkgver=0.0.1.r1.g7e5b47e
+pkgver=0.0.1.r0.gc65341f
 pkgrel=1
 pkgdesc="Emoji, kaomoji and symbol picker for Wayland that types at your text cursor"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('GPL-3.0-or-later' 'Unicode-3.0' 'MIT')
 # Uses QtWaylandClient private API, so rebuild after every Qt minor update.
 depends=(
@@ -18,7 +18,7 @@ makedepends=(
     'cmake'
     'git'
     'ninja'
-    'zig>=0.18'
+    'zig>=0.17'
 )
 optdepends=(
     'noto-fonts-emoji: colour emoji (or any other emoji-font)'
@@ -34,26 +34,15 @@ prepare() {
 
     # Package the working tree as it is, uncommitted and untracked files included
     msg2 "Copying the working tree..."
-    if git -C "$_repo" rev-parse --git-dir &>/dev/null; then
-        git -C "$_repo" ls-files -z --cached --others --exclude-standard -- . ':!packaging' |
-            while IFS= read -r -d '' _file; do
-                [[ -e "$_repo/$_file" ]] || continue
-                install -Dm644 "$_repo/$_file" "$srcdir/$pkgname/$_file"
-            done
-    else
-        tar -C "$_repo" --exclude=./packaging --exclude=./build --exclude=./zig-out --exclude=./.zig-cache -cf - . |
-            tar -C "$srcdir/$pkgname" -xf -
-    fi
+    git -C "$_repo" ls-files -z --cached --others --exclude-standard -- . ':!packaging' |
+        while IFS= read -r -d '' _file; do
+            [[ -e "$_repo/$_file" ]] || continue
+            install -Dm644 "$_repo/$_file" "$srcdir/$pkgname/$_file"
+        done
 }
 
 pkgver() {
-    local _repo="$(_repodir)"
-    local _version="$(sed -n 's/^project(GlyphPop VERSION \([0-9.]*\).*/\1/p' "$_repo/CMakeLists.txt")"
-    if git -C "$_repo" rev-parse --verify -q HEAD &>/dev/null; then
-        printf "%s.r%s.g%s" "$_version" "$(git -C "$_repo" rev-list --count HEAD)" "$(git -C "$_repo" rev-parse --short HEAD)"
-    else
-        printf "%s" "$_version"
-    fi
+    "$startdir/version.sh"
 }
 
 build() {

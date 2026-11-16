@@ -1,0 +1,37 @@
+Source: glyphpop
+Section: utils
+Priority: optional
+Maintainer: ELECTRO <electro@electris.net>
+# Zig 0.17 is not in the archive, so it is not listed and has to be on PATH.
+Build-Depends:
+ cmake,
+ debhelper-compat (= 13),
+ liblayershellqtinterface-dev,
+ libxkbcommon-dev,
+ ninja-build,
+ pkgconf,
+ qt6-base-dev,
+ qt6-base-private-dev,
+ qt6-declarative-dev,
+ qt6-wayland-dev,
+ qt6-wayland-dev-tools,
+ qt6-wayland-private-dev,
+Standards-Version: 4.7.2
+Homepage: https://github.com/ItzELECTR0/GlyphPop
+Rules-Requires-Root: no
+
+Package: glyphpop
+Architecture: amd64 arm64
+Depends:
+ layer-shell-qt,
+ qml6-module-qtquick,
+ qml6-module-qtquick-effects,
+ qt6-wayland,
+ ${misc:Depends},
+ ${shlibs:Depends},
+Recommends:
+ fonts-noto-color-emoji,
+ xdg-desktop-portal,
+Description: Emoji, kaomoji and symbol picker for Wayland
+ GlyphPop opens at the text cursor and types the emoji, kaomoji or symbol
+ you pick straight into the focused field.

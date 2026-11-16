@@ -72,6 +72,12 @@ The colour names are Material roles (`surface`, `surface_container`, `on_surface
 
 GlyphPop is an input method, and Wayland allows one per seat. If you run fcitx5 or ibus, GlyphPop still works but types everything through its virtual keyboard instead.
 
+## Install
+
+Grab a package for Arch, Debian 13, Fedora 44 or Alpine 3.24 (x86_64 or aarch64) from the [releases](https://github.com/ItzELECTR0/GlyphPop/releases).
+The Alpine one is signed with a throwaway key, so it needs `apk add --allow-untrusted`.
+The `experimental` release at the top is built from the latest commit, so it's the newest and also the most likely to be broken.
+
 ## Prerequisites
 
 - Zig 0.17 or newer
@@ -89,7 +95,7 @@ cmake --build build
 ./build/glyphpop
 ```
 
-## Install on Arch
+## Package your checkout on Arch
 
 ```sh
 cd packaging

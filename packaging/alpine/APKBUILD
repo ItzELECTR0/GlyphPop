@@ -1,0 +1,52 @@
+# Maintainer: ELECTRO <electro@electris.net>
+
+pkgname=glyphpop
+pkgver=$("${startdir%/*}/version.sh" | sed 's/\.r\([0-9]*\)\.g.*/_git\1/')
+pkgrel=0
+pkgdesc="Emoji, kaomoji and symbol picker for Wayland that types at your text cursor"
+url="https://github.com/ItzELECTR0/GlyphPop"
+arch="x86_64 aarch64"
+license="GPL-3.0-or-later AND Unicode-3.0 AND MIT"
+depends="layer-shell-qt qt6-qtdeclarative"
+# Zig 0.17 is newer than Alpine's, so it is not listed and has to be on PATH.
+makedepends="
+    cmake
+    git
+    layer-shell-qt-dev
+    libxkbcommon-dev
+    qt6-qtbase-dev
+    qt6-qtbase-private-dev
+    qt6-qtdeclarative-dev
+    qt6-qtwayland-dev
+    samurai
+    "
+source=""
+builddir="$srcdir/$pkgname"
+
+prepare() {
+    _root=${startdir%/*/*}
+
+    rm -rf "$builddir"
+    mkdir -p "$builddir"
+    git -C "$_root" archive HEAD | tar -x -C "$builddir"
+}
+
+build() {
+    cd "$builddir"
+    cmake -B build -G Ninja \
+        -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_INSTALL_PREFIX=/usr
+    cmake --build build
+}
+
+check() {
+    cd "$builddir"
+    ZIG_GLOBAL_CACHE_DIR="$builddir/build/zig-cache" zig build test --cache-dir "$builddir/build/zig-test-cache"
+}
+
+package() {
+    cd "$builddir"
+    DESTDIR="$pkgdir" cmake --install build
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 data/unicode/LICENSE "$pkgdir/usr/share/licenses/$pkgname/unicode-LICENSE"
+}
