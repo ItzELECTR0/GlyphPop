@@ -60,3 +60,7 @@ Controls style.
 ## Scrolling
 
 Scroll views take no mouse buttons (`acceptedButtons: Qt.NoButton`), so a mouse drag never scrolls them; touch and touchpads still do. `WheelScroll` moves `wheelScrollLines` times 24 px per wheel notch, because Flickable turns each wheel event into a speed-capped flick that crawls, worst with high-resolution wheels. It is a MouseArea under the content with `scrollGestureEnabled: false`, so controls get the wheel first and touchpad scrolls (synthesized events) fall through to Flickable's own kinetic scrolling. A WheelHandler cannot do this: on Wayland, wheel events carry Qt's touchpad device whenever the compositor offers pointer gestures, and the handler blocks before `onWheel` runs.
+
+## App icon
+
+`data/net.electris.GlyphPop.svg` is the app icon, named after the app ID so `Icon=` and the Wayland app_id both find it, and installed to `share/icons/hicolor/scalable/apps`. It sticks to plain shapes, gradients and transforms, with no clip paths, masks or `pathLength`, because launchers and docs draw it with librsvg, Qt Svg or smaller SVG libraries.

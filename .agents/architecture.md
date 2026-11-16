@@ -2,8 +2,8 @@
 
 ## Process model
 
-One resident instance owns the session bus name `io.github.ItzELECTR0.GlyphPop` (object
-`/io/github/ItzELECTR0/GlyphPop`, method `Activate(as)`). Any later `glyphpop ...` fails to register the name,
+One resident instance owns the session bus name `net.electris.GlyphPop` (object
+`/net/electris/GlyphPop`, method `Activate(as)`). Any later `glyphpop ...` fails to register the name,
 forwards its arguments and exits, so a keybind costs one D-Bus call. `Instance::Activate` in `app/main.cpp`
 handles `quit`; everything else goes to `Picker::handleCommand` (`toggle`, `emoji`, `kaomoji`, `symbols`,
 `settings`, `close`). A cold `glyphpop` with no daemon becomes the daemon and opens immediately; `--daemon` starts hidden.

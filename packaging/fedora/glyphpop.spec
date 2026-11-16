@@ -50,4 +50,5 @@ ZIG_GLOBAL_CACHE_DIR=$PWD/zig-cache zig build test --cache-dir $PWD/zig-test-cac
 %files
 %license LICENSE unicode-LICENSE
 %{_bindir}/glyphpop
-%{_datadir}/applications/io.github.ItzELECTR0.GlyphPop.desktop
+%{_datadir}/applications/net.electris.GlyphPop.desktop
+%{_datadir}/icons/hicolor/scalable/apps/net.electris.GlyphPop.svg

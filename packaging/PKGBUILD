@@ -1,6 +1,6 @@
 # Maintainer: ELECTRO
 pkgname=glyphpop
-pkgver=0.0.1.r0.gc65341f
+pkgver=0.0.1.r6.gb50b724
 pkgrel=1
 pkgdesc="Emoji, kaomoji and symbol picker for Wayland that types at your text cursor"
 arch=('x86_64' 'aarch64')

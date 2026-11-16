@@ -7,8 +7,8 @@
 #include <QQuickWindow>
 #include <cstdio>
 
-static const char *Service = "io.github.ItzELECTR0.GlyphPop";
-static const char *ObjectPath = "/io/github/ItzELECTR0/GlyphPop";
+static const char *Service = "net.electris.GlyphPop";
+static const char *ObjectPath = "/net/electris/GlyphPop";
 
 static const char *Usage = R"(Usage: glyphpop [command]
 
@@ -25,7 +25,7 @@ static const char *Usage = R"(Usage: glyphpop [command]
 class Instance : public QObject
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "io.github.ItzELECTR0.GlyphPop")
+    Q_CLASSINFO("D-Bus Interface", "net.electris.GlyphPop")
 
 public:
     explicit Instance(Picker *picker)
@@ -70,7 +70,7 @@ int main(int argc, char **argv)
 
     QGuiApplication app(argc, argv);
     app.setApplicationName("GlyphPop");
-    app.setDesktopFileName("io.github.ItzELECTR0.GlyphPop");
+    app.setDesktopFileName("net.electris.GlyphPop");
     app.setQuitOnLastWindowClosed(false);
 
     QDBusConnection bus = QDBusConnection::sessionBus();

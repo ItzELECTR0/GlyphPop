@@ -88,4 +88,5 @@ target_link_libraries(glyphpop PRIVATE
     glyphpop_core Qt6::Quick Qt6::Qml Qt6::DBus Qt6::GuiPrivate
     Qt6::WaylandClient Qt6::WaylandClientPrivate LayerShellQt::Interface PkgConfig::XKB)
 install(TARGETS glyphpop RUNTIME DESTINATION bin)
-install(FILES data/io.github.ItzELECTR0.GlyphPop.desktop DESTINATION share/applications)
+install(FILES data/net.electris.GlyphPop.desktop DESTINATION share/applications)
+install(FILES data/net.electris.GlyphPop.svg DESTINATION share/icons/hicolor/scalable/apps)

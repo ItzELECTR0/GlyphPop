@@ -1,5 +1,9 @@
 # GlyphPop
 
+<p align="center">
+  <img src="data/net.electris.GlyphPop.svg" alt="GlyphPop logo" width="160">
+</p>
+
 GlyphPop is an emoji, kaomoji and symbol picker for Wayland
 Inspired by the Windows emoji picker with a familiar design and similar behaviour
 It's written in Zig with a Qt Quick interface and tested on Hyprland (sway works too)
