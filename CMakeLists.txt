@@ -5,14 +5,12 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTOMOC ON)
 find_program(ZIG_EXECUTABLE zig REQUIRED)
-find_package(Qt6 6.8 REQUIRED COMPONENTS Quick Qml DBus WaylandClient)
+find_package(Qt6 6.10 REQUIRED COMPONENTS Quick Qml DBus WaylandClient)
 # The input-method popup role and grabbed-key delivery need Qt's private Wayland and QPA API, on purpose.
 set(QT_NO_PRIVATE_MODULE_WARNING ON)
-# Qt 6.9 split the private modules into packages of their own; 6.8 defines them with the public ones.
-if(Qt6_VERSION VERSION_GREATER_EQUAL 6.9)
-    find_package(Qt6 REQUIRED COMPONENTS GuiPrivate WaylandClientPrivate)
-endif()
-find_package(LayerShellQt REQUIRED)
+find_package(Qt6 REQUIRED COMPONENTS GuiPrivate WaylandClientPrivate)
+# 6.6 added setScreen and setWantsToBeOnActiveScreen, and it needs Qt 6.10 itself.
+find_package(LayerShellQt 6.6 REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(XKB REQUIRED IMPORTED_TARGET xkbcommon)
 qt_policy(SET QTP0001 NEW)

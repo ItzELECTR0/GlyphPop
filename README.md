@@ -81,8 +81,8 @@ The `experimental` release at the top is built from the latest commit, so it's t
 ## Prerequisites
 
 - Zig 0.17 or newer
-- Qt 6.8 or newer with Quick, QML, D-Bus and Wayland client (private headers included)
-- LayerShellQt
+- Qt 6.10 or newer with Quick, QML, D-Bus and Wayland client (private headers included)
+- LayerShellQt 6.6 or newer
 - xkbcommon
 - CMake, Ninja and a C++20 compiler
 - A colour emoji font, such as Noto Color Emoji
